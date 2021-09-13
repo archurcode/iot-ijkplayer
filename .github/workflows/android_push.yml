@@ -21,8 +21,13 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Download r10e NDK
+        run: |
+          wget https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip
+          unzip android-ndk-r10e-linux-x86_64.zip
       - name: Build with Gradle
         run: |
+          export ANDROID_NDK=./android-ndk-r10e
           sh .github/script/build_armv7a.sh
           cd android/ijkplayer
           ./gradlew :ijkplayer-armv7a:build
