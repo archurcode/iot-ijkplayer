@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
       - name: Build with Gradle
         run: |
-          sb .github/script/build_armv7a.sh
+          sh .github/script/build_armv7a.sh
           cd android/ijkplayer
           ./gradlew :ijkplayer-armv7a:build
           ./gradlew :ijkplayer-java:build
